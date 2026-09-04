@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Empleados - Listado</title>
+</head>
+<body>
+<h2>Listado de Empleados</h2>
+
+<a th:href="@{/employees/nuevo}">+ Nuevo empleado</a>
+<br><br>
+
+<!-- Formulario de busqueda: los 3 parametros son opcionales y combinables -->
+<form th:action="@{/employees/buscar}" method="get">
+    <input type="text" name="texto" th:value="${texto}" placeholder="Nombre, apellido o correo">
+    <input type="text" name="puesto" th:value="${puesto}" placeholder="job_id (ej: SA_REP)">
+    <input type="number" step="0.01" name="salarioMinimo" th:value="${salarioMinimo}" placeholder="Salario minimo">
+    <button type="submit">Buscar</button>
+    <a th:href="@{/employees}">Limpiar filtros</a>
+</form>
+<br>
+
+<table border="1" cellpadding="6">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>Telefono</th>
+        <th>Fecha contratacion</th>
+        <th>Puesto</th>
+        <th>Salario</th>
+        <th>Comision</th>
+        <th>Manager ID</th>
+        <th>Department ID</th>
+        <th>Ver</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="e : ${empleados}">
+        <td th:text="${e.employeeId}"></td>
+        <td th:text="${e.firstName}"></td>
+        <td th:text="${e.lastName}"></td>
+        <td th:text="${e.email}"></td>
+        <td th:text="${e.phoneNumber}"></td>
+        <td th:text="${e.hireDate}"></td>
+        <td th:text="${e.jobId}"></td>
+        <td th:text="${e.salary}"></td>
+        <td th:text="${e.commissionPct}"></td>
+        <td th:text="${e.managerId}"></td>
+        <td th:text="${e.departmentId}"></td>
+        <td>
+            <a th:href="@{/employees/ver(id=${e.employeeId})}">Ver</a>
+        </td>
+        <td>
+            <a th:href="@{/employees/editar(id=${e.employeeId})}">Editar</a>
+        </td>
+        <td>
+            <!-- aolo mostramos el boton -->
+            <a href="#" onclick="alert('Eliminar no esta implementado en esta practica'); return false;">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

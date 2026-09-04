@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle del Empleado</title>
+</head>
+<body>
+<h2>Detalle del empleado</h2>
+
+<p><strong>ID:</strong> <span th:text="${employee.employeeId}"></span></p>
+<p><strong>Nombre:</strong> <span th:text="${employee.firstName}"></span></p>
+<p><strong>Apellido:</strong> <span th:text="${employee.lastName}"></span></p>
+<p><strong>Correo:</strong> <span th:text="${employee.email}"></span></p>
+<p><strong>Telefono:</strong> <span th:text="${employee.phoneNumber}"></span></p>
+<p><strong>Fecha de contratacion:</strong> <span th:text="${employee.hireDate}"></span></p>
+<p><strong>Puesto:</strong> <span th:text="${employee.jobId}"></span></p>
+<p><strong>Salario:</strong> <span th:text="${employee.salary}"></span></p>
+<p><strong>Comision:</strong> <span th:text="${employee.commissionPct}"></span></p>
+<p><strong>Manager ID:</strong> <span th:text="${employee.managerId}"></span></p>
+<p><strong>Department ID:</strong> <span th:text="${employee.departmentId}"></span></p>
+
+<a th:href="@{/employees}">Volver al listado</a>
+</body>
+</html>
